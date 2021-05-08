@@ -3,45 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace trilionapi.Migrations
 {
-    public partial class initSqlServer : Migration
+    public partial class initSql : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Title",
-                table: "Items",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "TEXT",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<bool>(
-                name: "Done",
-                table: "Items",
-                type: "bit",
-                nullable: false,
-                oldClrType: typeof(bool),
-                oldType: "INTEGER");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Items",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "TEXT",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Items",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "INTEGER")
-                .Annotation("SqlServer:Identity", "1, 1");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -79,6 +44,21 @@ namespace trilionapi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Done = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -275,6 +255,9 @@ namespace trilionapi.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Items");
+
+            migrationBuilder.DropTable(
                 name: "RefreshTokens");
 
             migrationBuilder.DropTable(
@@ -282,41 +265,6 @@ namespace trilionapi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Title",
-                table: "Items",
-                type: "TEXT",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<bool>(
-                name: "Done",
-                table: "Items",
-                type: "INTEGER",
-                nullable: false,
-                oldClrType: typeof(bool),
-                oldType: "bit");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Items",
-                type: "TEXT",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Items",
-                type: "INTEGER",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
         }
     }
 }

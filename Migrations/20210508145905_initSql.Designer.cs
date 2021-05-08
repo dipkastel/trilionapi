@@ -10,8 +10,8 @@ using trilionapi.Data;
 namespace trilionapi.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20210508142230_initSqlServer")]
-    partial class initSqlServer
+    [Migration("20210508145905_initSql")]
+    partial class initSql
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -85,6 +85,13 @@ namespace trilionapi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "trilionapi v1"));
             }
+            else {
+
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "trilionapi v1"));
+
+            }
 
             app.UseHttpsRedirection();
 

@@ -35,7 +35,7 @@ namespace trilionapi
         {
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
             services.AddDbContext<ApiDbContext>(options =>
-               options.UseSqlite(
+               options.UseSqlServer(
                        Configuration.GetConnectionString("DefaultConnection")
                    ));
 
